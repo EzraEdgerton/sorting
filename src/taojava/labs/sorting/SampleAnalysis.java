@@ -23,9 +23,11 @@ public class SampleAnalysis
     @SuppressWarnings("unchecked")
     ArrayBuilder<Integer>[] builders =
         (ArrayBuilder<Integer>[]) new ArrayBuilder[] {
-                                                      SorterAnalyzer.randomIntArrBuilder,
-                                                      SorterAnalyzer.increasingIntArrBuilder };
-    String[] builderNames = { "Random", "Increasing" };
+                                                      SorterAnalyzer.semiSortedIntArrBuilder,
+                                                      SorterAnalyzer.decreasingIntArrBuilder,
+                                                      SorterAnalyzer.increasingIntArrBuilder,
+                                                      SorterAnalyzer.randomIntArrBuilder};
+    String[] builderNames = { "SemiSorted", "Decreasing", "Increasing", "Random" };
 
     SorterAnalyzer.combinedAnalysis(pen, sorters, sorterNames,
                                     SorterAnalyzer.standardIntComparator,
