@@ -2,6 +2,8 @@ package taojava.labs.sorting;
 
 import static org.junit.Assert.*;
 
+import java.util.Comparator;
+
 import org.junit.Test;
 
 /**

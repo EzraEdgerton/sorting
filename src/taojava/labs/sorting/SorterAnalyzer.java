@@ -90,7 +90,7 @@ public class SorterAnalyzer
             (length) ->
         {
           Random random = new Random();
-          int switchNum = length/10;
+          int switchNum = length/20; //maybe different number here?
           Integer[] vals = new Integer[length];
           for (int i = 0; i < length; i++)
             {
@@ -158,11 +158,10 @@ public class SorterAnalyzer
                                             ArrayBuilder<T> builder, int size,
                                             int repetitions)
   {
-    long max = 0;
-    long min;
+    long max = basicAnalysis(sorter, order, builder, size);
+    long min = max;
     long avg = 0;
     long temp;
-    min = basicAnalysis(sorter, order, builder, size);
     for (int i = 0; i < repetitions; i++)
       {
         temp = basicAnalysis(sorter, order, builder, size);

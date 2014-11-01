@@ -134,7 +134,23 @@ class Utils
                               T[] a2, int lb2, int ub2, T[] merged, int lbm,
                               int ubm)
   {
-    // STUB
+    while((lb1 < ub1) && (lb2 < ub2)){
+      if(order.compare(a1[lb1], a2[lb2]) <= 0){
+        merged[lbm++] = a1[lb1++];
+      }
+      else{
+        merged[lbm++] = a2[lb2++];
+      }
+    }
+    
+    while(lb1 < ub1){
+      merged[lbm++] = a1[lb1++];
+    }
+    
+    while(lb2 < ub2){
+      merged[lbm++] = a2[lb2++];
+    }
+    
     return merged;
   } // merge(Comparator<T>, T[], int, int, T[], int, int)
 
