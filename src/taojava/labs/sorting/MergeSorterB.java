@@ -16,7 +16,7 @@ public class MergeSorterB<T> extends SorterBridge<T> {
 	 */
 	@Override
 	public T[] sort(T[] vals, Comparator<T> order) {
-		T[] aux = vals.clone();
+		T[] aux = (T[]) new Object[vals.length];
 		return mergesort(vals, order, aux, 0, vals.length - 1);
 	} // sort(T[], Comparator<T>)
 	
@@ -29,6 +29,8 @@ public class MergeSorterB<T> extends SorterBridge<T> {
 		}
 		return vals;
 	}
+	
+	
 	
 	
 } // MergeSorter<T>

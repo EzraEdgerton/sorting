@@ -8,17 +8,19 @@ import java.io.PrintWriter;
  * @author Samuel A. Rebelsky
  * @author Your Name Here
  */
-public class MergeSortAnalyst
+public class QuicksortAnalyst
 {
   public static void main(String args[])
   {
     PrintWriter pen = new PrintWriter(System.out, true);
     @SuppressWarnings("unchecked")
     Sorter<Integer>[] sorters =
-        (Sorter<Integer>[]) new Sorter[] {new MergeSorter<Integer>(),
-                                          new MergeSorterB<Integer>(),
+        (Sorter<Integer>[]) new Sorter[] {new NewQuicksorter<Integer>(),
+                                          new NewQuicksorterB<Integer>(),
+                                          new NewQuicksorterC<Integer>(),
+                                          new NewQuicksorterD<Integer>()
                                          };
-    String[] sorterNames = { "Merge Sort A", "Merge Sort B"};
+    String[] sorterNames = { "Quick Sort A", "Quick Sort B", "Quick Sort C", "Quick Sort D"};
 
     @SuppressWarnings("unchecked")
     ArrayBuilder<Integer>[] builders =

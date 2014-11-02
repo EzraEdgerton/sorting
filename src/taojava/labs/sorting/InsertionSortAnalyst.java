@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  */
 public class InsertionSortAnalyst
 {
-  public static void main(String[] args)
+  public static void main(String args[])
   {
     PrintWriter pen = new PrintWriter(System.out, true);
     @SuppressWarnings("unchecked")
