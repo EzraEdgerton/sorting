@@ -140,7 +140,15 @@ public class SorterAnalyzer
     timer.start();
 
     // Do the real work.
-    sorter.sort(values, order);
+    try
+      {
+        sorter.sort(values, order);
+      }
+    catch (StackOverflowError soe)
+      {
+        // It didn't run.  Return a value to indicate failure
+        return -1;   
+      }
 
     // Stop the timer.
     timer.pause();
