@@ -55,10 +55,24 @@ public class NewQuicksorterD<T>
     else
       {
         Random random = new Random();
+        T a = vals[random.nextInt(ub-lb) + lb];
+        T b = vals[random.nextInt(ub-lb) + lb];
+        T c = vals[random.nextInt(ub-lb) + lb];
+        
+        if((order.compare(a, b) >= 0 && order.compare(a, c) <= 0)
+            ||(order.compare(a, b) <= 0 && order.compare(a,c) >= 0))
+          return a;
+        else if((order.compare(a, b) >= 0 && order.compare(b, c) <= 0)
+            ||(order.compare(a, b) <= 0 && order.compare(b, c) >= 0))
+          return b;
+        else
+          return c;
+
+        /*Random random = new Random();
         int arr[] =
             { random.nextInt((ub - lb) + lb), random.nextInt((ub - lb) + lb),
              random.nextInt((ub - lb) + lb) };
-        int medArr[] = { arr[0], arr[0], arr[0] };
+        T numsArr[] = { vals[arr[0]], vals[arr[1]], vals[arr[2]] };
         T max = vals[arr[0]];
         T min = vals[arr[0]];
 
@@ -80,6 +94,7 @@ public class NewQuicksorterD<T>
               }
           }
         return vals[arr[1]];
+        */
       }
 
   } // selectPivot(T[], Comparator<T>, int, int)

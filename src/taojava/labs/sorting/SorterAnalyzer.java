@@ -26,12 +26,12 @@ public class SorterAnalyzer
   /**
    * The smallest array size we use.
    */
-  static final int SMALLEST = 500;
+  static final int SMALLEST = 10000;
 
   /**
    * The largest array size we use.
    */
-  static final int LARGEST = 16000;
+  static final int LARGEST = 40000;
 
   /**
    * The amount we scale the array size between tests.
