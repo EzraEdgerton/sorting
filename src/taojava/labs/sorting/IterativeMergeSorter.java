@@ -21,10 +21,15 @@ public class IterativeMergeSorter<T>
   {
     // STUB
     int size = 1;
+    T[] scratch = vals;
     while (size < vals.length)
       {
-        // Merge neighboring subarrays of size size
-        // FILL IN!
+        for(int i = 0; i < vals.length; i += 2*size){
+          //System.out.println("i = " + i + " +size = " + (i+size) + " +2size " + (i+2*size));
+          int midIndex = Math.min(i + size, vals.length);
+          int maxIndex = Math.min(i + 2*size, vals.length);
+          vals = Utils.mergeWithinArray(order, vals, i, midIndex, midIndex, maxIndex, scratch, i, maxIndex);
+        }
         // The merged subarrays are now twice as large
         size *= 2;
       } // while

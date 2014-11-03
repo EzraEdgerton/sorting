@@ -92,9 +92,7 @@ public class NewQuicksorter<T>
     T tmp;
     while(e < b){
       if(order.compare(vals[e], pivot) < 0){
-        tmp = vals[e];
-        vals[e] = vals[s];
-        vals[s] = tmp;
+        Utils.swap(vals, e, s);
         s++;
         e++;
       }
@@ -102,9 +100,7 @@ public class NewQuicksorter<T>
         e++;
       }
       else{
-        tmp = vals[e];
-        vals[e] = vals[b - 1];
-        vals[b - 1] = tmp;
+        Utils.swap(vals, e, b-1);
         b--;
       }
     }

@@ -17,8 +17,9 @@ public class MergeSortAnalyst
     Sorter<Integer>[] sorters =
         (Sorter<Integer>[]) new Sorter[] {new MergeSorter<Integer>(),
                                           new MergeSorterB<Integer>(),
+                                          new IterativeMergeSorter<Integer>()
                                          };
-    String[] sorterNames = { "Merge Sort A", "Merge Sort B"};
+    String[] sorterNames = { "Merge Sort A", "Merge Sort B", "Iterative Merge"};
 
     @SuppressWarnings("unchecked")
     ArrayBuilder<Integer>[] builders =

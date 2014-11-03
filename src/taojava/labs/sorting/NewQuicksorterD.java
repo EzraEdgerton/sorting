@@ -48,21 +48,42 @@ public class NewQuicksorterD<T>
    */
   public T selectPivot(T[] vals, Comparator<T> order, int lb, int ub)
   {
-    Random random = new Random();
-    int arr[] = {random.nextInt((ub - lb) + lb), random.nextInt((ub - lb) + lb), random.nextInt((ub - lb) + lb)};
-    if((arr[1]<=arr[0]&&arr[0]>=arr[2])||(arr[2]<=arr[0]&&arr[0]>=arr[1]))
+    if ((ub - lb) < 3)
       {
-        return vals[arr[0]];
+        return vals[lb];
       }
-    if((arr[0]<=arr[1]&&arr[1]>=arr[2])||(arr[2]<=arr[1]&&arr[1]>=arr[0]))
+    else
       {
+        Random random = new Random();
+        int arr[] =
+            { random.nextInt((ub - lb) + lb), random.nextInt((ub - lb) + lb),
+             random.nextInt((ub - lb) + lb) };
+        int medArr[] = { arr[0], arr[0], arr[0] };
+        T max = vals[arr[0]];
+        T min = vals[arr[0]];
+
+        for (int i = 1; i < 3; i++)
+          {
+            if (order.compare(vals[arr[i]], max) > 0)
+              {
+                max = vals[arr[i]];
+                medArr[2] = arr[i];
+              }
+            else if (order.compare(vals[arr[i]], min) < 0)
+              {
+                min = vals[arr[i]];
+                medArr[0] = arr[i];
+              }
+            else
+              {
+                medArr[1] = arr[i];
+              }
+          }
         return vals[arr[1]];
       }
-    return vals[arr[2]];
-    
-    
+
   } // selectPivot(T[], Comparator<T>, int, int)
-  
+
   /**
    * Reorganize the elements in positions [lb..ub) of vals such that
    * elements smaller than the pivot appear to the left, elements
@@ -103,24 +124,28 @@ public class NewQuicksorterD<T>
     int e = lb;
     int b = ub;
     T tmp;
-    while(e < b){
-      if(order.compare(vals[e], pivot) < 0){
-        tmp = vals[e];
-        vals[e] = vals[s];
-        vals[s] = tmp;
-        s++;
-        e++;
+    while (e < b)
+      {
+        if (order.compare(vals[e], pivot) < 0)
+          {
+            tmp = vals[e];
+            vals[e] = vals[s];
+            vals[s] = tmp;
+            s++;
+            e++;
+          }
+        else if (order.compare(vals[e], pivot) == 0)
+          {
+            e++;
+          }
+        else
+          {
+            tmp = vals[e];
+            vals[e] = vals[b - 1];
+            vals[b - 1] = tmp;
+            b--;
+          }
       }
-      else if(order.compare(vals[e], pivot) == 0){
-        e++;
-      }
-      else{
-        tmp = vals[e];
-        vals[e] = vals[b - 1];
-        vals[b - 1] = tmp;
-        b--;
-      }
-    }
     return new int[] { s, b };
   } // partition
 } // NewQuicksorter<T>
