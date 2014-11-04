@@ -134,51 +134,64 @@ class Utils
                               T[] a2, int lb2, int ub2, T[] merged, int lbm,
                               int ubm)
   {
-    while((lb1 < ub1) && (lb2 < ub2)){
-      if(order.compare(a1[lb1], a2[lb2]) <= 0){
+    while ((lb1 < ub1) && (lb2 < ub2))
+      {
+        if (order.compare(a1[lb1], a2[lb2]) <= 0)
+          {
+            merged[lbm++] = a1[lb1++];
+          }//if
+        else
+          {
+            merged[lbm++] = a2[lb2++];
+          }//else
+      }//while
+
+    while (lb1 < ub1)
+      {
         merged[lbm++] = a1[lb1++];
-      }
-      else{
+      }//while
+
+    while (lb2 < ub2)
+      {
         merged[lbm++] = a2[lb2++];
-      }
-    }
-    
-    while(lb1 < ub1){
-      merged[lbm++] = a1[lb1++];
-    }
-    
-    while(lb2 < ub2){
-      merged[lbm++] = a2[lb2++];
-    }
-    
+      }//while
+
     return merged;
-  } // merge(Comparator<T>, T[], int, int, T[], int, int)
-  
-  public static <T> T[] mergeWithinArray(Comparator<T> order, T[] vals, int lb1, int ub1, int lb2, int ub2, T[] aux, int lba, int uba){
+  } // merge(Comparator<T>, T[], int, int, T[], int, int, T[], int, int)
+
+  public static <T> T[] mergeWithinArray(Comparator<T> order, T[] vals,
+                                         int lb1, int ub1, int lb2, int ub2,
+                                         T[] aux, int lba, int uba)
+  {
     int k = lba;
-    for(int i = lb1; i < ub1; i++)
-        aux[k++] = vals[i];
-    for(int j = lb2; j < ub2; j++)
-        aux[k++] = vals[j];
-    
-    while((lb1 < ub1) && (lb2 < ub2)){
-          if(order.compare(aux[lb1], aux[lb2]) <= 0){
+    for (int i = lb1; i < ub1; i++)
+      aux[k++] = vals[i];
+    for (int j = lb2; j < ub2; j++)
+      aux[k++] = vals[j];
+
+    while ((lb1 < ub1) && (lb2 < ub2))
+      {
+        if (order.compare(aux[lb1], aux[lb2]) <= 0)
+          {
             vals[lba++] = aux[lb1++];
-          }
-          else{
+          }//if
+        else
+          {
             vals[lba++] = aux[lb2++];
-          }
-        }
-        
-        while(lb1 < ub1){
-          vals[lba++] = aux[lb1++];
-        }
-        
-        while(lb2 < ub2){
-          vals[lba++] = aux[lb2++];
-        }
+          }//else
+      }//while
+
+    while (lb1 < ub1)
+      {
+        vals[lba++] = aux[lb1++];
+      }//while
+
+    while (lb2 < ub2)
+      {
+        vals[lba++] = aux[lb2++];
+      }//while
     return vals;
-}
+  }//mergeWithinArray(Comparator<T>, T[], int, int, int, int, T[], int, int)
 
   /**
    * "Randomly" permute an array in place.

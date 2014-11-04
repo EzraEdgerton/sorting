@@ -91,25 +91,24 @@ public class NewQuicksorterC<T>
     int s = lb;
     int e = lb;
     int b = ub;
-    T tmp;
-    while(e < b){
-      if(order.compare(vals[e], pivot) < 0){
-        tmp = vals[e];
-        vals[e] = vals[s];
-        vals[s] = tmp;
-        s++;
-        e++;
-      }
-      else if(order.compare(vals[e], pivot) == 0){
-        e++;
-      }
-      else{
-        tmp = vals[e];
-        vals[e] = vals[b - 1];
-        vals[b - 1] = tmp;
-        b--;
-      }
-    }
+    while (e < b)
+      {
+        if (order.compare(vals[e], pivot) < 0)
+          {
+            Utils.swap(vals, e, s);
+            s++;
+            e++;
+          }//if
+        else if (order.compare(vals[e], pivot) == 0)
+          {
+            e++;
+          }//else if
+        else
+          {
+            Utils.swap(vals, e, b-1);
+            b--;
+          }//else
+      }//while
     return new int[] { s, b };
-  } // partition
+  } // partition(T, T[], Comparator<T>, int, int)
 } // NewQuicksorter<T>

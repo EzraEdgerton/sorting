@@ -49,7 +49,7 @@ public class NewQuicksorter<T>
   {
     return vals[lb];
   } // selectPivot(T[], Comparator<T>, int, int)
-  
+
   /**
    * Reorganize the elements in positions [lb..ub) of vals such that
    * elements smaller than the pivot appear to the left, elements
@@ -89,21 +89,24 @@ public class NewQuicksorter<T>
     int s = lb;
     int e = lb;
     int b = ub;
-    T tmp;
-    while(e < b){
-      if(order.compare(vals[e], pivot) < 0){
-        Utils.swap(vals, e, s);
-        s++;
-        e++;
-      }
-      else if(order.compare(vals[e], pivot) == 0){
-        e++;
-      }
-      else{
-        Utils.swap(vals, e, b-1);
-        b--;
-      }
-    }
+    while (e < b)
+      {
+        if (order.compare(vals[e], pivot) < 0)
+          {
+            Utils.swap(vals, e, s);
+            s++;
+            e++;
+          }//if
+        else if (order.compare(vals[e], pivot) == 0)
+          {
+            e++;
+          }//else if
+        else
+          {
+            Utils.swap(vals, e, b - 1);
+            b--;
+          }//else
+      }//while
     return new int[] { s, b };
-  } // partition
+  } // partition(T, T[], Comparator<T>, int, int)
 } // NewQuicksorter<T>

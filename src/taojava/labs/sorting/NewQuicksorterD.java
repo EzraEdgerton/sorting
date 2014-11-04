@@ -51,7 +51,7 @@ public class NewQuicksorterD<T>
     if ((ub - lb) < 3)
       {
         return vals[lb];
-      }
+      }//if
     else
       {
         Random random = new Random();
@@ -67,36 +67,7 @@ public class NewQuicksorterD<T>
           return b;
         else
           return c;
-
-        /*Random random = new Random();
-        int arr[] =
-            { random.nextInt((ub - lb) + lb), random.nextInt((ub - lb) + lb),
-             random.nextInt((ub - lb) + lb) };
-        T numsArr[] = { vals[arr[0]], vals[arr[1]], vals[arr[2]] };
-        T max = vals[arr[0]];
-        T min = vals[arr[0]];
-
-        for (int i = 1; i < 3; i++)
-          {
-            if (order.compare(vals[arr[i]], max) > 0)
-              {
-                max = vals[arr[i]];
-                medArr[2] = arr[i];
-              }
-            else if (order.compare(vals[arr[i]], min) < 0)
-              {
-                min = vals[arr[i]];
-                medArr[0] = arr[i];
-              }
-            else
-              {
-                medArr[1] = arr[i];
-              }
-          }
-        return vals[arr[1]];
-        */
-      }
-
+      }//else
   } // selectPivot(T[], Comparator<T>, int, int)
 
   /**
@@ -138,29 +109,24 @@ public class NewQuicksorterD<T>
     int s = lb;
     int e = lb;
     int b = ub;
-    T tmp;
     while (e < b)
       {
         if (order.compare(vals[e], pivot) < 0)
           {
-            tmp = vals[e];
-            vals[e] = vals[s];
-            vals[s] = tmp;
+            Utils.swap(vals, e, s);
             s++;
             e++;
-          }
+          }//if
         else if (order.compare(vals[e], pivot) == 0)
           {
             e++;
-          }
+          }//else if
         else
           {
-            tmp = vals[e];
-            vals[e] = vals[b - 1];
-            vals[b - 1] = tmp;
+            Utils.swap(vals, e, b-1);
             b--;
-          }
-      }
+          }//else
+      }//while
     return new int[] { s, b };
-  } // partition
+  } // partition(T, T[], Comparator<T>, int, int)
 } // NewQuicksorter<T>
