@@ -138,20 +138,20 @@ class Utils
       {
         if (order.compare(a1[lb1], a2[lb2]) <= 0)
           {
-            merged[lbm++] = a1[lb1++];
+            merged[lbm++] = a1[lb1++]; //put a1 element in merged array if its smaller
           }//if
         else
           {
-            merged[lbm++] = a2[lb2++];
+            merged[lbm++] = a2[lb2++]; //else put a2 element
           }//else
       }//while
 
-    while (lb1 < ub1)
+    while (lb1 < ub1) //finish adding in a1
       {
         merged[lbm++] = a1[lb1++];
       }//while
 
-    while (lb2 < ub2)
+    while (lb2 < ub2) //finish adding in a2
       {
         merged[lbm++] = a2[lb2++];
       }//while
@@ -163,8 +163,8 @@ class Utils
                                          int lb1, int ub1, int lb2, int ub2,
                                          T[] aux, int lba, int uba)
   {
-    int k = lba;
-    for (int i = lb1; i < ub1; i++)
+    int k = lba; 
+    for (int i = lb1; i < ub1; i++) //copy array portions into aux
       aux[k++] = vals[i];
     for (int j = lb2; j < ub2; j++)
       aux[k++] = vals[j];
@@ -173,20 +173,20 @@ class Utils
       {
         if (order.compare(aux[lb1], aux[lb2]) <= 0)
           {
-            vals[lba++] = aux[lb1++];
+            vals[lba++] = aux[lb1++]; //merge a1 element if its smaller
           }//if
         else
           {
-            vals[lba++] = aux[lb2++];
+            vals[lba++] = aux[lb2++]; //else merge a2 element
           }//else
       }//while
 
-    while (lb1 < ub1)
+    while (lb1 < ub1) //finish merging a1
       {
         vals[lba++] = aux[lb1++];
       }//while
 
-    while (lb2 < ub2)
+    while (lb2 < ub2) //finish mergin a2
       {
         vals[lba++] = aux[lb2++];
       }//while

@@ -58,6 +58,8 @@ public class NewQuicksorter<T>
    * array that gives the lower bound (inclusive) and upper bound
    * (exclusive) of the section of the array that contains the equal
    * values.
+   * 
+   * This was adapted from Patrick Slough's Exam 1 psuedosort method
    *
    * @param
    *    pivot, a value
@@ -86,27 +88,27 @@ public class NewQuicksorter<T>
    */
   int[] partition(T pivot, T[] vals, Comparator<T> order, int lb, int ub)
   {
-    int s = lb;
-    int e = lb;
-    int b = ub;
+    int s = lb; //index of where smaller numbers end
+    int e = lb; //index of where equal numbers end
+    int b = ub; //index of where bigger numbers begin
     while (e < b)
       {
         if (order.compare(vals[e], pivot) < 0)
           {
-            Utils.swap(vals, e, s);
+            Utils.swap(vals, e, s); //if value is smaller, swap to where s is and iterate e and s
             s++;
             e++;
           }//if
-        else if (order.compare(vals[e], pivot) == 0)
+        else if (order.compare(vals[e], pivot) == 0) //if value is equal, iterate e
           {
             e++;
           }//else if
         else
           {
-            Utils.swap(vals, e, b - 1);
+            Utils.swap(vals, e, b - 1); //if value is smaller, decrement b
             b--;
           }//else
       }//while
-    return new int[] { s, b };
+    return new int[] { s, b }; //return bounds of equal section
   } // partition(T, T[], Comparator<T>, int, int)
 } // NewQuicksorter<T>

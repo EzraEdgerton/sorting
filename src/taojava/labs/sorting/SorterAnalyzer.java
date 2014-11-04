@@ -58,7 +58,7 @@ public class SorterAnalyzer
       for (int i = 0; i < length; i++)
         vals[i] = random.nextInt(length);
       return vals;
-    }; // randomIArrayBuilder
+    }; // randomIntArrayBuilder
 
   /** 
    * Build arrays of integer values in increasing order.
@@ -70,7 +70,7 @@ public class SorterAnalyzer
           for (int i = 0; i < length; i++)
             vals[i] = i;
           return vals;
-        };
+        }; //increasingIntArrBuilder
   /**
    * Build arrays of integer values in decreasing order.
    */
@@ -81,7 +81,7 @@ public class SorterAnalyzer
           for (int i = 0; i < length; i++)
             vals[i] = length - i;
           return vals;
-        };
+        };//decreasingIntArrBuilder
         
 /**
  * Build arrays of integer values that are mostly sorted
@@ -90,18 +90,21 @@ public class SorterAnalyzer
             (length) ->
         {
           Random random = new Random();
-          int switchNum = length/20; //maybe different number here?
+          // We want 10% of the array to be random, so we perform one swap for 
+          // every 20 elements, as each swap makes 2 elements randomly ordered
+          int switchNum = length/20;
           Integer[] vals = new Integer[length];
           for (int i = 0; i < length; i++)
             {
             vals[i] = i;
-            }
+            }//for
+          //swaps elements.
           for (int i = 0; i < switchNum; i++)
             {
               Utils.swap(vals, random.nextInt(length), random.nextInt(length));
-            }
+            }//for
           return vals;
-        };
+        };//semiSortedIntArrBuilder
   // +--------------+----------------------------------------------------
   // | Class Fields |
   // +--------------+
@@ -170,6 +173,7 @@ public class SorterAnalyzer
     long min = max;
     long avg = 0;
     long temp;
+    //assigns min and max, sums for average
     for (int i = 0; i < repetitions; i++)
       {
         temp = basicAnalysis(sorter, order, builder, size);
@@ -177,11 +181,11 @@ public class SorterAnalyzer
         if (temp < min)
           {
             min = temp;
-          }
+          }//if
         if (temp > max)
           {
             max = temp;
-          }
+          }//if
       }//for
     //calculate average
     avg = avg / repetitions;

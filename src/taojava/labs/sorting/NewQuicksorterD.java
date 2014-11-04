@@ -50,19 +50,19 @@ public class NewQuicksorterD<T>
   {
     if ((ub - lb) < 3)
       {
-        return vals[lb];
+        return vals[lb]; //if small subarray, choose leftmost
       }//if
     else
       {
         Random random = new Random();
         T a = vals[random.nextInt(ub-lb) + lb];
-        T b = vals[random.nextInt(ub-lb) + lb];
+        T b = vals[random.nextInt(ub-lb) + lb]; //choose three random array elements
         T c = vals[random.nextInt(ub-lb) + lb];
         
-        if((order.compare(a, b) >= 0 && order.compare(a, c) <= 0)
+        if((order.compare(a, b) >= 0 && order.compare(a, c) <= 0) // if b < a < c or c < a < b
             ||(order.compare(a, b) <= 0 && order.compare(a,c) >= 0))
           return a;
-        else if((order.compare(a, b) >= 0 && order.compare(b, c) <= 0)
+        else if((order.compare(a, b) >= 0 && order.compare(b, c) <= 0) // a < b < c or c < b < a
             ||(order.compare(a, b) <= 0 && order.compare(b, c) >= 0))
           return b;
         else
@@ -129,4 +129,4 @@ public class NewQuicksorterD<T>
       }//while
     return new int[] { s, b };
   } // partition(T, T[], Comparator<T>, int, int)
-} // NewQuicksorter<T>
+} // NewQuicksorterD<T>

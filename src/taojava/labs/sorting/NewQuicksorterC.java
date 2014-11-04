@@ -48,8 +48,8 @@ public class NewQuicksorterC<T>
    */
   public T selectPivot(T[] vals, Comparator<T> order, int lb, int ub)
   {
-    Random random = new Random();
-    return vals[random.nextInt(ub-lb) + lb];
+    Random random = new Random(); 
+    return vals[random.nextInt(ub-lb) + lb]; //find random element in bounds
   } // selectPivot(T[], Comparator<T>, int, int)
   
   /**
@@ -111,4 +111,4 @@ public class NewQuicksorterC<T>
       }//while
     return new int[] { s, b };
   } // partition(T, T[], Comparator<T>, int, int)
-} // NewQuicksorter<T>
+} // NewQuicksorterC<T>

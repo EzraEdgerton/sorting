@@ -21,11 +21,11 @@ public class MergeSorterB<T> extends SorterBridge<T> {
     } // sort(T[], Comparator<T>)
     
     public T[] mergesort(T[] vals, Comparator<T> order, T[] scratch, int lb, int ub){
-        if ((ub - lb) > 1){
+        if ((ub - lb) > 1){ //if the subarray has size > 1
             int mid = lb + (ub - lb)/2;
-            mergesort(vals, order, scratch, lb, mid);
+            mergesort(vals, order, scratch, lb, mid); //mergesort each size
             mergesort(vals, order, scratch, mid + 1, ub);
-            vals = Utils.mergeWithinArray(order, vals, lb, mid, mid+1, ub, scratch, lb, ub);
+            vals = Utils.mergeWithinArray(order, vals, lb, mid, mid+1, ub, scratch, lb, ub); //merge
         }
         return vals;
     }

@@ -56,7 +56,7 @@ public class InsertionSorterB<T>
     int i = n;
     while ((i > 0) && (order.compare(vals[i - 1], vals[i]) > 0))
       {
-    	T tmp = vals[i];
+    	T tmp = vals[i]; //in line swap
         vals[i] = vals[i-1];
         vals[i-1] = tmp;
         // Analysis:

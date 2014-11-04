@@ -47,8 +47,8 @@ public class NewQuicksorterB<T>
    */
   public T selectPivot(T[] vals, Comparator<T> order, int lb, int ub)
   {
-    int mid = (lb + ub)/2;
-    return vals[mid];
+    int mid = (lb + ub)/2; //find mid
+    return vals[mid]; 
   } // selectPivot(T[], Comparator<T>, int, int)
   
   /**
@@ -110,4 +110,4 @@ public class NewQuicksorterB<T>
       }//while
     return new int[] { s, b };
   } // partition(T, T[], Comparator<T>, int, int)
-} // NewQuicksorter<T>
+} // NewQuicksorterB<T>
